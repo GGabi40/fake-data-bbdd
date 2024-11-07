@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake Data for BBDD</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Generador de Usuarios Falsos</h1>
+
+    <form method="POST">
+        <h3>Selecciona los datos que deseas generar:</h3>
+        <div class="checkboxes">
+            <label><input type="checkbox" name="datos" value="nombre" {% if 'nombre' in datos_seleccionados %}checked{% endif %}> Nombre</label>
+            <label><input type="checkbox" name="datos" value="apellido" {% if 'apellido' in datos_seleccionados %}checked{% endif %}> Apellido</label>
+            <label><input type="checkbox" name="datos" value="fecha_nacimiento" {% if 'fecha_nacimiento' in datos_seleccionados %}checked{% endif %}> Fecha de Nacimiento</label>
+            <label><input type="checkbox" name="datos" value="direccion" {% if 'direccion' in datos_seleccionados %}checked{% endif %}> Dirección</label>
+            <label><input type="checkbox" name="datos" value="email" {% if 'email' in datos_seleccionados %}checked{% endif %}> Email</label>
+            <label><input type="checkbox" name="datos" value="telefono" {% if 'telefono' in datos_seleccionados %}checked{% endif %}> Teléfono</label>
+            <label><input type="checkbox" name="datos" value="texto" {% if 'texto' in datos_seleccionados %}checked{% endif %}> Texto Aleatorio</label>
+            <label><input type="checkbox" name="datos" value="profesiones" {% if 'profesiones' in datos_seleccionados %}checked{% endif %}> Profesión Aleatoria</label>
+        </div>
+        <label for="cantidad">Cantidad de usuarios a generar:</label>
+        <input type="number" id="cantidad" name="cantidad" min="1" max="100" value="{{ cantidad }}">
+        <button type="submit">Generar</button>
+    </form>
+
+    <div class="container-table">
+        <table>
+            <thead>
+                <tr>
+                    {% if 'nombre' in datos_seleccionados %}<th>Nombre</th>{% endif %}
+                    {% if 'apellido' in datos_seleccionados %}<th>Apellido</th>{% endif %}
+                    {% if 'fecha_nacimiento' in datos_seleccionados %}<th>Fecha de Nacimiento</th>{% endif %}
+                    {% if 'direccion' in datos_seleccionados %}<th>Dirección</th>{% endif %}
+                    {% if 'email' in datos_seleccionados %}<th>Email</th>{% endif %}
+                    {% if 'telefono' in datos_seleccionados %}<th>Teléfono</th>{% endif %}
+                    {% if 'texto' in datos_seleccionados %}<th>Texto Aleatorio</th>{% endif %}
+                    {% if 'profesiones' in datos_seleccionados %}<th>Profesión Aleatoria</th>{% endif %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for usuario in usuarios %}
+                <tr>
+                    {% if 'nombre' in usuario %}<td>{{ usuario.nombre }}</td>{% endif %}
+                    {% if 'apellido' in usuario %}<td>{{ usuario.apellido }}</td>{% endif %}
+                    {% if 'fecha_nacimiento' in usuario %}<td>{{ usuario.fecha_nacimiento }}</td>{% endif %}
+                    {% if 'direccion' in usuario %}<td>{{ usuario.direccion }}</td>{% endif %}
+                    {% if 'email' in usuario %}<td>{{ usuario.email }}</td>{% endif %}
+                    {% if 'telefono' in usuario %}<td>{{ usuario.telefono }}</td>{% endif %}
+                    {% if 'texto' in usuario %}<td>{{ usuario.texto }}</td>{% endif %}
+                    {% if 'profesiones' in datos_seleccionados %}<td>{{ usuario.profesion }}</td>{% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+    {% block content %}
+        
+    {% endblock %}
+
+    {% block script %}
+        
+    {% endblock %}
+</body>
+</html>
