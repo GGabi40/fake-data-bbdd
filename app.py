@@ -1,35 +1,39 @@
 from flask import Flask, render_template, request
 from faker import Faker
+from faker.providers import DynamicProvider
 import random
 
 app = Flask(__name__)
 faker = Faker('es_ES')
 
-fake_professions = [
-    "Ingeniero en realidad aumentada",
-    "Director de tecnología de drones",
-    "Consultor de redes neuronales cuánticas",
-    "Especialista en análisis de datos de unicornios",
-    "Gerente de automatización de IA",
-    "Diseñador de interfaces holográficas",
-    "Coordinador de experiencias de usuario en metaverso",
-    "Consultor de sostenibilidad espacial",
-    "Desarrollador de algoritmos para robots autómatas",
-    "Analista de tendencias en nanotecnología",
-    "Médico",
-    "Carpintero",
-    "Analista de datos",
-    "Bioquímico",
-    "Farmacéutico",
-    "Odontólogo",
-    "Enfermero",
-    "Piloto de Avión",
-    "Soldado",
-    "Vendedor"
-]
+ProfesionProvider = DynamicProvider(
+    provider_name="fake_professions",
+    elements = [
+            "Ingeniero en realidad aumentada",
+            "Director de tecnología de drones",
+            "Consultor de redes neuronales cuánticas",
+            "Especialista en análisis de datos de unicornios",
+            "Gerente de automatización de IA",
+            "Diseñador de interfaces holográficas",
+            "Coordinador de experiencias de usuario en metaverso",
+            "Consultor de sostenibilidad espacial",
+            "Desarrollador de algoritmos para robots autómatas",
+            "Analista de tendencias en nanotecnología",
+            "Médico",
+            "Carpintero",
+            "Analista de datos",
+            "Bioquímico",
+            "Farmacéutico",
+            "Odontólogo",
+            "Enfermero",
+            "Piloto de Avión",
+            "Soldado",
+            "Vendedor"
+        ]
+)
 
-def generate_fake_profession():
-    return random.choice(fake_professions)
+faker.add_provider(ProfesionProvider)
+
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
@@ -62,7 +66,7 @@ def home():
         if 'texto' in datos_seleccionados:
             usuario['texto'] = faker.text()
         if "profesiones" in datos_seleccionados:
-            usuario["profesion"] = generate_fake_profession()
+            usuario["profesion"] = faker.fake_professions()
         
         usuarios_falsos.append(usuario)
         
