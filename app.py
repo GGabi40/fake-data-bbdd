@@ -6,34 +6,6 @@ import random
 app = Flask(__name__)
 faker = Faker('es_ES')
 
-ProfesionProvider = DynamicProvider(
-    provider_name="fake_professions",
-    elements = [
-            "Ingeniero en realidad aumentada",
-            "Director de tecnología de drones",
-            "Consultor de redes neuronales cuánticas",
-            "Especialista en análisis de datos de unicornios",
-            "Gerente de automatización de IA",
-            "Diseñador de interfaces holográficas",
-            "Coordinador de experiencias de usuario en metaverso",
-            "Consultor de sostenibilidad espacial",
-            "Desarrollador de algoritmos para robots autómatas",
-            "Analista de tendencias en nanotecnología",
-            "Médico",
-            "Carpintero",
-            "Analista de datos",
-            "Bioquímico",
-            "Farmacéutico",
-            "Odontólogo",
-            "Enfermero",
-            "Piloto de Avión",
-            "Soldado",
-            "Vendedor"
-        ]
-)
-
-faker.add_provider(ProfesionProvider)
-
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
@@ -55,6 +27,10 @@ def home():
             usuario['nombre'] = faker.first_name()
         if 'apellido' in datos_seleccionados:
             usuario['apellido'] = faker.last_name()
+        if 'username' in datos_seleccionados:
+            usuario['username'] = faker.user_name()
+        if 'password' in datos_seleccionados:
+            usuario['password'] = faker.password(length=12, special_chars=True, digits=True, upper_case=True, lower_case=True)
         if 'fecha_nacimiento' in datos_seleccionados:
             usuario['fecha_nacimiento'] = faker.date_of_birth()
         if 'direccion' in datos_seleccionados:
@@ -66,7 +42,22 @@ def home():
         if 'texto' in datos_seleccionados:
             usuario['texto'] = faker.text()
         if "profesiones" in datos_seleccionados:
-            usuario["profesion"] = faker.fake_professions()
+            usuario["profesion"] = faker.job()
+        if "empresa" in datos_seleccionados:
+            usuario["empresa"] = faker.company_suffix()
+        if 'permisos' in datos_seleccionados:
+            usuario["permisos"] = faker.random_element(elements=('admin', 'usuario', 'moderador'))
+        if 'fecha' in datos_seleccionados:
+            usuario["fecha"] = faker.date_this_century()
+        if 'productos' in datos_seleccionados:
+            usuario['productos'] = faker.word()
+        if 'descripcion' in datos_seleccionados:
+            usuario['descripcion'] = faker.sentence()
+        if 'precio' in datos_seleccionados:
+            fakePrecio = faker.random_int(min=100, max=10000)
+            fakeCents = faker.random_int(min=0, max=90)
+            usuario['precio'] = f'{fakePrecio}.{fakeCents}'
+        
         
         usuarios_falsos.append(usuario)
         

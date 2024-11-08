@@ -2,10 +2,6 @@
 
 {% block content %}
 
-<button id="generate-sql-btn">Generar Código MySQL</button>
-
-    <!-- Área de texto para mostrar el código MySQL generado -->
-    <textarea id="sql-output" readonly placeholder="Aquí aparecerá el código SQL..."></textarea>
     
 {% endblock %}
 
@@ -14,3 +10,4 @@
 {% block script %}
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 {% endblock %}
+

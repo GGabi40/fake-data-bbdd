@@ -26,4 +26,14 @@ document.getElementById("generate-sql-btn").addEventListener("click", function (
     });
 
     document.getElementById("sql-output").value = sqlOutput;
-  });
+});
+
+
+let texto = document.getElementById("sql-output").value;
+const copiar = async () => {
+    try {
+        await navigator.clipboard.writeText(texto);
+    } catch (error) {
+        console.error('Un error! ', error);
+    }
+}
