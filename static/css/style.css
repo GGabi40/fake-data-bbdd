@@ -241,6 +241,10 @@ footer {
     text-decoration: none;
 }
 
+#github {
+    color: white;
+}
+
 .instagram:hover {
     color: white;
     text-decoration: underline;
