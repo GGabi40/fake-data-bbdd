@@ -1,24 +1,25 @@
-<h1>FAKE DATA FOR BBDD</h1>
+# FAKE DATA FOR BBDD
 
-<p>A project for get fake data for your SQL code.</p>
+A project to generate fake data for your SQL databases.
 
-<a href="https://fake-data-bbdd.vercel.app/">Visit it Online</a>
+[Visit it Online](https://fake-data-bbdd.vercel.app/)
 
-<hr>
-<h2>💻 Technologies:</h2>
-<ul>
-    <li>HTML</li>
-    <li>CSS</li>
-    <li>JS</li>
-    <li>Flask</li>
-    <li>Python</li>
-</ul>
+---
 
-<hr>
+## 💻 Technologies
 
-<h2>Preview</h2>
-<img src="./static/img/preview1.png" alt="Vista Previa">
-<img src="./static/img/preview2.png" alt="Vista Previa">
+- HTML
+- CSS
+- JavaScript
+- Flask
+- Python
+- Faker (for generating fake data)
 
-<br>
-<p>Developed with ♥️ by GGabi40.</p>
+---
+
+## Preview
+
+![Preview 1](./static/img/preview1.png)
+![Preview 2](./static/img/preview2.png)
+
+---
