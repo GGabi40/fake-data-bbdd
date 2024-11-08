@@ -1,4 +1,4 @@
-# FAKE DATA FOR BBDD
+# FAKE DATA FOR DB
 
 A project to generate fake data for your SQL databases.
 
