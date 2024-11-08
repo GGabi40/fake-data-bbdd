@@ -1,16 +1,19 @@
-document.getElementById("generate-sql-btn").addEventListener("click", function () {
+document
+  .getElementById("generate-sql-btn")
+  .addEventListener("click", function () {
     const table = document.querySelector("table");
 
     let selectedData = [];
 
     // Recorremos los checkboxes seleccionados
-    document.querySelectorAll("input[name='datos']:checked")
-    .forEach( checkbox => {
+    document
+      .querySelectorAll("input[name='datos']:checked")
+      .forEach((checkbox) => {
         selectedData.push(checkbox.value); // Se guarda el valor de los checkboxes
-      }
-    );
+      });
 
-    let sqlOutput = "INSERT INTO nombre_tabla (" + selectedData.join(", ") + ") VALUES\n";
+    let sqlOutput =
+      "INSERT INTO nombre_tabla (" + selectedData.join(", ") + ") VALUES\n";
 
     const rows = table.querySelectorAll("tbody tr");
     rows.forEach((row, index) => {
@@ -32,15 +35,18 @@ document.getElementById("generate-sql-btn").addEventListener("click", function (
     });
 
     document.getElementById("sql-output").value = sqlOutput;
-});
-
+  });
 
 // COPIAR TEXTO de TEXTAREA
 let texto = document.getElementById("sql-output").value;
 const copiar = async () => {
-    try {
-        await navigator.clipboard.writeText(texto);
-    } catch (error) {
-        console.error('Un error! ', error);
-    }
-}
+  if (texto == "") {
+    return;
+  }
+
+  try {
+    await navigator.clipboard.writeText(texto);
+  } catch (error) {
+    console.error("Un error! ", error);
+  }
+};
