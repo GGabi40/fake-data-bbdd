@@ -2,12 +2,12 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fake Data for BBDD</title>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -20,14 +20,21 @@
                     endif %}> Nombre</label>
             <label><input type="checkbox" name="datos" value="apellido" {% if 'apellido' in datos_seleccionados
                     %}checked{% endif %}> Apellido</label>
+            <label><input type="checkbox" name="datos" value="dni" {% if 'dni' in datos_seleccionados
+                %}checked{% endif %}> DNI</label>
+            <label><input type="checkbox" name="datos" value="cuit" {% if 'cuit' in datos_seleccionados
+                %}checked{% endif %}> CUIT</label>
             <label><input type="checkbox" name="datos" value="username" {% if 'username' in datos_seleccionados
                     %}checked{% endif %}> Username</label>
             <label><input type="checkbox" name="datos" value="password" {% if 'descripcion' in datos_seleccionados
-                    %}checked{% endif %}> Contraseña</label>
+                    %}checked{% endif %}>
+                Contraseña</label>
             <label><input type="checkbox" name="datos" value="fecha_nacimiento" {% if 'fecha_nacimiento' in
-                    datos_seleccionados %}checked{% endif %}> Fecha de Nacimiento</label>
+                    datos_seleccionados %}checked{% endif %}> Fecha
+                de Nacimiento</label>
             <label><input type="checkbox" name="datos" value="direccion" {% if 'direccion' in datos_seleccionados
-                    %}checked{% endif %}> Dirección</label>
+                    %}checked{% endif %}>
+                Dirección</label>
             <label><input type="checkbox" name="datos" value="email" {% if 'email' in datos_seleccionados %}checked{%
                     endif %}> Email</label>
             <label><input type="checkbox" name="datos" value="telefono" {% if 'telefono' in datos_seleccionados
@@ -35,7 +42,8 @@
             <label><input type="checkbox" name="datos" value="texto" {% if 'texto' in datos_seleccionados %}checked{%
                     endif %}> Texto Aleatorio</label>
             <label><input type="checkbox" name="datos" value="profesiones" {% if 'profesiones' in datos_seleccionados
-                    %}checked{% endif %}> Profesión</label>
+                    %}checked{% endif %}>
+                Profesión</label>
             <label><input type="checkbox" name="datos" value="empresa" {% if 'empresa' in datos_seleccionados
                     %}checked{% endif %}> Empresa</label>
             <label><input type="checkbox" name="datos" value="permisos" {% if 'permisos' in datos_seleccionados
@@ -43,14 +51,16 @@
             <label><input type="checkbox" name="datos" value="fecha" {% if 'fecha' in datos_seleccionados %}checked{%
                     endif %}> Fecha Aleatoria</label>
             <label><input type="checkbox" name="datos" value="productos" {% if 'productos' in datos_seleccionados
-                    %}checked{% endif %}> Producto Aleatorio</label>
+                    %}checked{% endif %}> Producto
+                Aleatorio</label>
             <label><input type="checkbox" name="datos" value="descripcion" {% if 'descripcion' in datos_seleccionados
-                    %}checked{% endif %}> Descripción Aleatoria</label>
+                    %}checked{% endif %}> Descripción
+                Aleatoria</label>
             <label><input type="checkbox" name="datos" value="precio" {% if 'precio' in datos_seleccionados %}checked{%
                     endif %}> Precio</label>
         </div>
         <label for="cantidad">Cantidad de datos a generar:</label>
-        <input type="number" id="cantidad" name="cantidad" min="1" max="100" value="{{ cantidad }}">
+        <input type="number" id="cantidad" name="cantidad" min="1" max="100" value="{{ cantidad }}" />
         <button type="submit">Generar</button>
     </form>
 
@@ -58,54 +68,95 @@
         <table>
             <thead>
                 <tr>
-                    {% if 'nombre' in datos_seleccionados %}<th>Nombre</th>{% endif %}
-                    {% if 'apellido' in datos_seleccionados %}<th>Apellido</th>{% endif %}
-                    {% if 'username' in datos_seleccionados %}<th>Username</th>{% endif %}
-                    {% if 'password' in datos_seleccionados %}<th>Contraseña</th>{% endif %}
-                    {% if 'fecha_nacimiento' in datos_seleccionados %}<th>Fecha de Nacimiento</th>{% endif %}
-                    {% if 'direccion' in datos_seleccionados %}<th>Dirección</th>{% endif %}
-                    {% if 'email' in datos_seleccionados %}<th>Email</th>{% endif %}
-                    {% if 'telefono' in datos_seleccionados %}<th>Teléfono</th>{% endif %}
-                    {% if 'texto' in datos_seleccionados %}<th>Texto Aleatorio</th>{% endif %}
-                    {% if 'profesiones' in datos_seleccionados %}<th>Profesión Aleatoria</th>{% endif %}
-                    {% if 'empresa' in datos_seleccionados %}<th>Empresa</th>{% endif %}
-                    {% if 'permisos' in datos_seleccionados %}<th>Permisos</th>{% endif %}
-                    {% if 'fecha' in datos_seleccionados %}<th>Fecha Aleatoria</th>{% endif %}
-                    {% if 'productos' in datos_seleccionados %}<th>Productos</th>{% endif %}
-                    {% if 'descripcion' in datos_seleccionados %}<th>Descripción</th>{% endif %}
-                    {% if 'precio' in datos_seleccionados %}<th>Precio</th>{% endif %}
+                    {% if 'nombre' in datos_seleccionados %}
+                    <th>Nombre</th>
+                    {% endif %} {% if 'apellido' in datos_seleccionados %}
+                    <th>Apellido</th>
+                    {% endif %} {% if 'username' in datos_seleccionados %}
+                    <th>Username</th>
+                    {% endif %} {% if 'dni' in datos_seleccionados %}
+                    <th>DNI</th>
+                    {% endif %} {% if 'cuit' in datos_seleccionados %}
+                    <th>CUIT</th>
+                    {% endif %} {% if 'password' in datos_seleccionados %}
+                    <th>Contraseña</th>
+                    {% endif %} {% if 'fecha_nacimiento' in datos_seleccionados %}
+                    <th>Fecha de Nacimiento</th>
+                    {% endif %} {% if 'direccion' in datos_seleccionados %}
+                    <th>Dirección</th>
+                    {% endif %} {% if 'email' in datos_seleccionados %}
+                    <th>Email</th>
+                    {% endif %} {% if 'telefono' in datos_seleccionados %}
+                    <th>Teléfono</th>
+                    {% endif %} {% if 'texto' in datos_seleccionados %}
+                    <th>Texto Aleatorio</th>
+                    {% endif %} {% if 'profesiones' in datos_seleccionados %}
+                    <th>Profesión Aleatoria</th>
+                    {% endif %} {% if 'empresa' in datos_seleccionados %}
+                    <th>Empresa</th>
+                    {% endif %} {% if 'permisos' in datos_seleccionados %}
+                    <th>Permisos</th>
+                    {% endif %} {% if 'fecha' in datos_seleccionados %}
+                    <th>Fecha Aleatoria</th>
+                    {% endif %} {% if 'productos' in datos_seleccionados %}
+                    <th>Productos</th>
+                    {% endif %} {% if 'descripcion' in datos_seleccionados %}
+                    <th>Descripción</th>
+                    {% endif %} {% if 'precio' in datos_seleccionados %}
+                    <th>Precio</th>
+                    {% endif %}
                 </tr>
             </thead>
             <tbody>
                 {% for usuario in usuarios %}
                 <tr>
-                    {% if 'nombre' in usuario %}<td>{{ usuario.nombre }}</td>{% endif %}
-                    {% if 'apellido' in usuario %}<td>{{ usuario.apellido }}</td>{% endif %}
-                    {% if 'username' in usuario %}<td>{{ usuario.username }}</td>{% endif %}
-                    {% if 'password' in datos_seleccionados %}<td>{{ usuario.password }}</td>{% endif %}
-                    {% if 'fecha_nacimiento' in usuario %}<td>{{ usuario.fecha_nacimiento }}</td>{% endif %}
-                    {% if 'direccion' in usuario %}<td>{{ usuario.direccion }}</td>{% endif %}
-                    {% if 'email' in usuario %}<td>{{ usuario.email }}</td>{% endif %}
-                    {% if 'telefono' in usuario %}<td>{{ usuario.telefono }}</td>{% endif %}
-                    {% if 'texto' in usuario %}<td>{{ usuario.texto }}</td>{% endif %}
-                    {% if 'profesiones' in datos_seleccionados %}<td>{{ usuario.profesion }}</td>{% endif %}
-                    {% if 'empresa' in datos_seleccionados %}<td>{{ usuario.empresa }}</td>{% endif %}
-                    {% if 'permisos' in datos_seleccionados %}<td>{{ usuario.permisos }}</td>{% endif %}
-                    {% if 'fecha' in datos_seleccionados %}<td>{{ usuario.fecha }}</td>{% endif %}
-                    {% if 'productos' in datos_seleccionados %}<td>{{ usuario.productos }}</td>{% endif %}
-                    {% if 'descripcion' in datos_seleccionados %}<td>{{ usuario.descripcion }}</td>{% endif %}
-                    {% if 'precio' in datos_seleccionados %}<td>{{ usuario.precio }}</td>{% endif %}
+                    {% if 'nombre' in usuario %}
+                    <td>{{ usuario.nombre }}</td>
+                    {% endif %} {% if 'apellido' in usuario %}
+                    <td>{{ usuario.apellido }}</td>
+                    {% endif %} {% if 'dni' in usuario %}
+                    <td>{{ usuario.dni }}</td>
+                    {% endif %} {% if 'cuit' in usuario %}
+                    <td>{{ usuario.cuit }}</td>
+                    {% endif %} {% if 'username' in usuario %}
+                    <td>{{ usuario.username }}</td>
+                    {% endif %} {% if 'password' in datos_seleccionados %}
+                    <td>{{ usuario.password }}</td>
+                    {% endif %} {% if 'fecha_nacimiento' in usuario %}
+                    <td>{{ usuario.fecha_nacimiento }}</td>
+                    {% endif %} {% if 'direccion' in usuario %}
+                    <td>{{ usuario.direccion }}</td>
+                    {% endif %} {% if 'email' in usuario %}
+                    <td>{{ usuario.email }}</td>
+                    {% endif %} {% if 'telefono' in usuario %}
+                    <td>{{ usuario.telefono }}</td>
+                    {% endif %} {% if 'texto' in usuario %}
+                    <td>{{ usuario.texto }}</td>
+                    {% endif %} {% if 'profesiones' in datos_seleccionados %}
+                    <td>{{ usuario.profesion }}</td>
+                    {% endif %} {% if 'empresa' in datos_seleccionados %}
+                    <td>{{ usuario.empresa }}</td>
+                    {% endif %} {% if 'permisos' in datos_seleccionados %}
+                    <td>{{ usuario.permisos }}</td>
+                    {% endif %} {% if 'fecha' in datos_seleccionados %}
+                    <td>{{ usuario.fecha }}</td>
+                    {% endif %} {% if 'productos' in datos_seleccionados %}
+                    <td>{{ usuario.productos }}</td>
+                    {% endif %} {% if 'descripcion' in datos_seleccionados %}
+                    <td>{{ usuario.descripcion }}</td>
+                    {% endif %} {% if 'precio' in datos_seleccionados %}
+                    <td>{{ usuario.precio }}</td>
+                    {% endif %}
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
     </div>
 
-
     <button id="generate-sql-btn">Generar Código MySQL</button>
     <!-- Área de texto para mostrar el código MySQL generado -->
     <textarea id="sql-output" readonly placeholder="Aquí aparecerá el código SQL..."></textarea>
-    
+
     <div class="centralize">
         <div>
             <button onclick="copiar()" id="copy">
@@ -130,14 +181,14 @@
         </div>
     </div>
 
-
-    {% block script %}
-
-    {% endblock %}
+    {% block script %} {% endblock %}
 
     <footer>
-        <p>Developed with ♥️ by <a href="http://instagram.com/ggabi40" target="_blank" rel="noopener noreferrer"
-                class="instagram">GGabi40</a>.</p>
+        <p>
+            Developed with ♥️ by
+            <a href="http://instagram.com/ggabi40" target="_blank" rel="noopener noreferrer"
+                class="instagram">GGabi40</a>.
+        </p>
     </footer>
 </body>
 

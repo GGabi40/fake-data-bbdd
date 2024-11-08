@@ -27,6 +27,11 @@ def home():
             usuario['nombre'] = faker.first_name()
         if 'apellido' in datos_seleccionados:
             usuario['apellido'] = faker.last_name()
+        if 'dni' in datos_seleccionados:
+            usuario['dni'] = faker.random_number(digits=8)
+        if 'cuit' in datos_seleccionados:
+            documento_falso = f"{faker.random_number(digits=2)}-{faker.random_number(digits=8)}-{faker.random_number(digits=1)}"
+            usuario['cuit'] = documento_falso
         if 'username' in datos_seleccionados:
             usuario['username'] = faker.user_name()
         if 'password' in datos_seleccionados:
