@@ -49,7 +49,7 @@ def home():
         if "profesiones" in datos_seleccionados:
             usuario["profesion"] = faker.job()
         if "empresa" in datos_seleccionados:
-            usuario["empresa"] = faker.company_suffix()
+            usuario["empresa"] = faker.company()
         if 'permisos' in datos_seleccionados:
             usuario["permisos"] = faker.random_element(elements=('admin', 'usuario', 'moderador'))
         if 'fecha' in datos_seleccionados:
