@@ -40,10 +40,6 @@ document
 // COPIAR TEXTO de TEXTAREA
 let texto = document.getElementById("sql-output").value;
 const copiar = async () => {
-  if (texto == "") {
-    return;
-  }
-
   try {
     await navigator.clipboard.writeText(texto);
   } catch (error) {

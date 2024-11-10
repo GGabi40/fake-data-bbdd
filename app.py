@@ -62,7 +62,8 @@ def home():
             fakePrecio = faker.random_int(min=100, max=10000)
             fakeCents = faker.random_int(min=0, max=90)
             usuario['precio'] = f'{fakePrecio}.{fakeCents}'
-        
+        if 'trueFalse' in datos_seleccionados:
+            usuario['trueFalse'] = faker.pybool()
         
         usuarios_falsos.append(usuario)
         
