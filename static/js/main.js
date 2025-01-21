@@ -36,13 +36,3 @@ document
 
     document.getElementById("sql-output").value = sqlOutput;
   });
-
-// COPIAR TEXTO de TEXTAREA
-let texto = document.getElementById("sql-output").value;
-const copiar = async () => {
-  try {
-    await navigator.clipboard.writeText(texto);
-  } catch (error) {
-    console.error("Un error! ", error);
-  }
-};
