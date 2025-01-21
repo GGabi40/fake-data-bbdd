@@ -36,10 +36,6 @@ document
 
       });
 
-    /* TODO:
-      [] True y False sin comillas
-      [] Numero de cel sin espacios
-    */
       sqlOutput += `(${values.join(", ")})`;
 
       // Agrega punto y coma al último dato
@@ -52,12 +48,3 @@ document
 
     document.getElementById("sql-output").value = sqlOutput;
 });
-
-
-function removeSpace(cellValue) {
-  if(cellValue.includes(' ')) {
-    const newCell = cellValue.split(' ');
-    console.log(newCell.join(''));
-    return newCell.join('');
-  }
-}
