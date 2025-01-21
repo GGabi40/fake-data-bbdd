@@ -21,6 +21,12 @@ document
       const values = Array.from(cells).map((cell) => {
         const cellValue = cell.innerText.trim();
 
+        // Elimina espacios y agrega comillas a numeros de tel
+        if(cellValue.includes(' ') || cellValue.startsWith('+')) {
+          const newCell = cellValue.split(' ');
+          return `'${newCell.join('')}'`;
+        }
+        
         // si es un numero o True o False, no tendrá comillas simples
         if (cellValue === 'True' || cellValue === 'False' || !isNaN(cellValue)) {
           return cellValue
@@ -45,4 +51,13 @@ document
     });
 
     document.getElementById("sql-output").value = sqlOutput;
-  });
+});
+
+
+function removeSpace(cellValue) {
+  if(cellValue.includes(' ')) {
+    const newCell = cellValue.split(' ');
+    console.log(newCell.join(''));
+    return newCell.join('');
+  }
+}
